@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_18_143524) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_18_150716) do
   create_table "dog_walkings", force: :cascade do |t|
     t.string "status"
     t.date "appointment_date"
@@ -18,8 +18,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_18_143524) do
     t.integer "durantion"
     t.decimal "latitude", precision: 10, scale: 6
     t.decimal "longitude", precision: 10, scale: 6
-    t.date "start_tour"
-    t.date "end_tour"
+    t.datetime "start_tour", precision: nil
+    t.datetime "end_tour", precision: nil
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
