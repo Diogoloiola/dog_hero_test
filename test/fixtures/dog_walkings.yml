@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  status: MyString
+  appointment_date: 2022-06-18
+  price: 1.5
+  durantion: 1
+  latitude: 9.99
+  longitude: 9.99
+  start_tour: 2022-06-18
+  end_tour: 2022-06-18
+
+two:
+  status: MyString
+  appointment_date: 2022-06-18
+  price: 1.5
+  durantion: 1
+  latitude: 9.99
+  longitude: 9.99
+  start_tour: 2022-06-18
+  end_tour: 2022-06-18
