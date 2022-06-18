@@ -1,7 +1,4 @@
 class DogWalking < ApplicationRecord
-  PRICE_WITH_30_MINUTES = 25
-  PRICE_WITH_60_MINUTES = 35
-
   attr_accessor :size_dogs
 
   has_many :dogs, dependent: :destroy
@@ -22,12 +19,7 @@ class DogWalking < ApplicationRecord
   end
 
   def set_price
-    case duration
-    when 30
-      self.price = PRICE_WITH_30_MINUTES * dogs.size
-    when 60
-      self.price = PRICE_WITH_60_MINUTES * dogs.size
-    end
+    self.price = Values::PriceService.new(duration, dogs.size).call
   end
 
   def count_dogs
@@ -38,11 +30,7 @@ class DogWalking < ApplicationRecord
     return if @size_dogs.nil?
     return if dogs.size == @size_dogs
 
-    case duration
-    when 30
-      self.price = price + (PRICE_WITH_30_MINUTES - 10) * (dogs.size - @size_dogs)
-    when 60
-      self.price = price + (PRICE_WITH_60_MINUTES - 15) * (dogs.size - @size_dogs)
-    end
+    self.price = Values::PriceService.new(duration, dogs.size - @size_dogs, price:,
+                                                                            operation: 'add_new_dogs').call
   end
 end
