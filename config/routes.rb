@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  resources :dog_walkings, defaults: { format: :json } do
+    patch 'start_walk', on: :member
+    patch 'end_walk', on: :member
+  end
 end
