@@ -15,7 +15,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_18_150716) do
     t.string "status"
     t.date "appointment_date"
     t.float "price"
-    t.integer "durantion"
+    t.integer "duration"
     t.decimal "latitude", precision: 10, scale: 6
     t.decimal "longitude", precision: 10, scale: 6
     t.datetime "start_tour", precision: nil
