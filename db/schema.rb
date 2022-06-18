@@ -10,17 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_220_618_143_231) do
-  create_table 'dog_walkings', force: :cascade do |t|
-    t.string 'status'
-    t.date 'appointment_date'
-    t.float 'price'
-    t.integer 'durantion'
-    t.decimal 'latitude', precision: 10, scale: 6
-    t.decimal 'longitude', precision: 10, scale: 6
-    t.date 'start_tour'
-    t.date 'end_tour'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+ActiveRecord::Schema[7.0].define(version: 2022_06_18_143524) do
+  create_table "dog_walkings", force: :cascade do |t|
+    t.string "status"
+    t.date "appointment_date"
+    t.float "price"
+    t.integer "durantion"
+    t.decimal "latitude", precision: 10, scale: 6
+    t.decimal "longitude", precision: 10, scale: 6
+    t.date "start_tour"
+    t.date "end_tour"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
+
+  create_table "dogs", force: :cascade do |t|
+    t.string "name"
+    t.integer "dog_walking_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dog_walking_id"], name: "index_dogs_on_dog_walking_id"
+  end
+
+  add_foreign_key "dogs", "dog_walkings"
 end
